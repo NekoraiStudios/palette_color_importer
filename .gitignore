@@ -1,11 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
 .nomedia
+.editorconfig
 
 # Godot-specific ignores
 .import/
 export.cfg
 export_credentials.cfg
+
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -14,3 +16,5 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+addons/godot-git-plugin/*
