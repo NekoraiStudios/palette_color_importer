@@ -15,10 +15,13 @@ func convert_to_palette(itex:Array):
 		var colors:PackedColorArray;
 		var texture:Texture = ResourceLoader.load(path)
 		var image:Image = texture.get_image()
-		for x in image.get_width():
-			for y in image.get_height():
+		for y in image.get_height():
+			for x in image.get_width():
 				var new_color = image.get_pixel(x,y)
 				if not colors.has(new_color) and new_color.a > 0.1:
 					colors.append(new_color)
-		EditorInterface.get_editor_settings().set_project_metadata("color_picker", "presets", colors)
-		EditorInterface.restart_editor()
+		var new_file = ColorPalette.new()
+		new_file.colors = colors
+		ResourceSaver.save(new_file,path.get_base_dir()+"/palette.tres")
+		#EditorInterface.get_editor_settings().set_project_metadata("color_picker", "presets", colors)
+		#EditorInterface.restart_editor()
